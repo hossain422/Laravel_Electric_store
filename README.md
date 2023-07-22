@@ -13,3 +13,7 @@ Fully E-commerce Functionality by PHP Laravel, jQuery, Ajax
 10. Product sorting without page reload using Ajax
 11. Product Filtering without page reload using Ajax
 12. Add to Cart system without page reload using Ajax
+13. Place order system.
+14. Payment Gateway integration
+15. Order Invoice download with PDF
+16. Product Rating & Review system
