@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Jul 22, 2023 at 08:10 PM
+-- Generation Time: Jul 27, 2023 at 06:28 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -152,7 +152,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (11, '2023_07_22_001611_create_orders_table', 7),
 (12, '2023_07_22_001642_create_shippings_table', 7),
 (13, '2023_07_22_001658_create_order_items_table', 7),
-(14, '2023_07_22_081351_create_payments_table', 8);
+(14, '2023_07_22_081351_create_payments_table', 8),
+(15, '2023_07_27_160810_create_wishlists_table', 9);
 
 -- --------------------------------------------------------
 
@@ -468,6 +469,20 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `us
 (7, 'Nazmul Hossain', 'nazmulhossain9996@gmail.com', NULL, NULL, '1', 'google', '102678880995942265145', 'ya29.a0AbVbY6MigaxX1hEfblQkH1qoL3HVwHe4x-N8xAcz9CC0uYAy1YNccfVaqEkxAhu24QgeKSF3_ymiM4IcUv76PJJCB7SrKV9Opzbx4q-qoLIEQXZQAmfqrYhSHqhisAZD63ZqxL0LCBPlweDpKLOjmSeI9nTiaCgYKAUQSARMSFQFWKvPl1hj1Xsxxg_hjrgdbxzwQjQ0163', NULL, NULL, NULL, NULL, NULL, NULL, 'Bangladesh', NULL, NULL, NULL, '2023-07-07 23:16:43', '2023-07-07 23:16:43'),
 (9, 'Hossain Ahmed', 'hossainahmed360360@gmail.com', NULL, NULL, '1', 'google', '115590838516590592031', 'ya29.a0AbVbY6PHVHJ4UsTv2HTcwBpbp1bBwb-2G6yJVZB4SBzkOiXW9k6h1VEU4h43kqJCVBERcZY7ygJe_RbAtr5Mh9iYJqsNSO4Qu3yI59VbB7Kj3N-dqKJvv43H7xIxQ4bQEeyTj7pApI9w84eq7S0FYdb7vYRvaCgYKAW0SARESFQFWKvPlO6DXBd2yqc4z5okTaZ6f7w0163', NULL, NULL, NULL, NULL, NULL, NULL, 'Bangladesh', NULL, NULL, NULL, '2023-07-08 02:58:24', '2023-07-08 02:58:24');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wishlists`
+--
+
+CREATE TABLE `wishlists` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` varchar(255) NOT NULL,
+  `product_id` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 --
 -- Indexes for dumped tables
 --
@@ -567,6 +582,12 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
+-- Indexes for table `wishlists`
+--
+ALTER TABLE `wishlists`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -598,7 +619,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `multi_images`
@@ -653,6 +674,12 @@ ALTER TABLE `sub_categories`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `wishlists`
+--
+ALTER TABLE `wishlists`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

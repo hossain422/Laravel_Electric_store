@@ -11,11 +11,12 @@ class ProductController extends Controller
 {
     public function index(){
         $recent_product = Product::where('status', 1)->orderBy('id', 'desc')->limit(20)->get();
-        $categories = SubCategory::where('status', 1)->orderBy('id', 'desc')->get();
+        $home_category = Product::where('status', 1)->inRandomOrder()->get();
+        $categories = SubCategory::where('status', 1)->orderBy('id', 'asc')->get();
         $category = SubCategory::where('status', 1)->orderBy('id', 'desc')->get();
         $brand = Brand::where('status', 1)->orderBy('id', 'desc')->get();
         $electronic_category = Product::where('category_id', 16)->orderBy('id', 'desc')->get();
-        return view('welcome', compact('recent_product', 'electronic_category','category', 'categories', 'brand'));
+        return view('welcome', compact('recent_product', 'electronic_category','category', 'categories', 'brand', 'home_category'));
     }
     public function product_details($id){
         $product = Product::find($id);
@@ -72,5 +73,9 @@ class ProductController extends Controller
         $search = $request->search;
         
         return view('search', compact('products', 'sub_category', 'brand', 'search'));
+    }
+    public function home_category(Request $request){
+        $home_category = Product::where('sub_category_id', $request->id)->inRandomOrder()->get();
+        return view('welcome', compact('home_category'))->render();
     }
 }

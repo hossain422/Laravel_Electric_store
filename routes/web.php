@@ -59,6 +59,7 @@ Route::get('category/{id}', [ProductController::class, 'category']);
 Route::get('product_filter', [ProductController::class, 'product_filter']);
 Route::get('sortBy', [ProductController::class, 'sortBy']);
 Route::get('search', [ProductController::class, 'search']);
+Route::get('home_category', [ProductController::class, 'home_category']);
 
 //__Cart__//
 Route::middleware('auth')->group(function () {

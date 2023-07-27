@@ -1817,6 +1817,20 @@
                 }
             });
         });
+        // Home Category
+        $(document).on('click', '.home_category', function(e){
+            e.preventDefault();
+            var id = $(this).data('id');
+            // alert(id);
+            $.ajax({
+                method:'get',
+                url:"{{url('home_category')}}",
+                data:{id:id},
+                success:function(res){
+                    $('.home_category_section').html(res);
+                }
+            });
+        });
 
 
 
